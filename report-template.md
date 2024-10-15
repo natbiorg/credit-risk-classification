@@ -4,24 +4,25 @@
 
 In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
 
-* Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any other algorithms).
+This analysis was run to train and evaluate a model to assess loan risk (whether an account is a healthy loan (0) or high risk loan (1)). Data used were the lending actvity and included the loan size, interest rate, borrower ID, debt to income ratio, number of accounts with the financial institution, whether the account has derogatory marks, the total debt, and loan status with a total of 8 columns and 77,536 rows. 
+
+To train and test the model, I split the data available into a training set (75% of original data) and a testing set (25%). The model was was then trained on the data using LogisticRegression which assumes the data is best fit using logistic regresssion and uses Limited-memory Broyden-Fletcher-Goldfarb-Shanno (lbfgs) algorithm. The model then predicts loan status of each of the remaining lending activity record (testing set) and I measure the efficiency using a confusion matrix and a classification report which I discuss in results. 
 
 ## Results
 
-Using bulleted lists, describe the accuracy scores and the precision and recall scores of all machine learning models.
-
 * Machine Learning Model 1:
-    * Description of Model 1 Accuracy, Precision, and Recall scores.
+    * Accuracy Score: Overall the model had an accuracy score of 99%. Very slay :) 
+    * Precision: 
+        * Class 0: 1.00
+        * Class 1: 0.84
+        * Findings: The model had a 100% precision score for class 0 (healthy loan) and an 84% for class 1 (high-risk loan), meaning all instances predicted as class 0 are correct while 84% of the instances that are predicted as class 1 are actually class 1, suggesting there are some false positives of high-risk loans. 
+    * Recall: 
+        * Class 0: 0.99
+        * Class 1: 0.94
+        * Findings: When it comes to recall, the model had a 99% for class 0 and 94% for class 1. The model correctly idenitfied 99% of class 0 instances correctly, and predicted 94% of class 1 instances correctly. 
 
 ## Summary
 
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
+I would recommend this model. The logistic regression model performs very strongly in classifying high risk and healthy loans. It has some error in identifying high-risk loans, predicting false positives or identifying loans to be high risk when they are not. It also predicts some false negatives for high-risk loans but less so. However, the model is near perfect in predicting healthy loans from lending activity and overall it is accurate.
 
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
 
-If you do not recommend any of the models, please justify your reasoning.
